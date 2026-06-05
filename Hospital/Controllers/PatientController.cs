@@ -1,4 +1,5 @@
-﻿using Hospital.Data;
+﻿using System.Diagnostics;
+using Hospital.Data;
 using Hospital.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -129,6 +130,7 @@ namespace Hospital.Controllers
                 .ToListAsync();
             return View(history);
         }
+        
 
     }
 }
