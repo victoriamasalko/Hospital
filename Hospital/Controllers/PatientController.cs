@@ -100,7 +100,7 @@ namespace Hospital.Controllers
                 //save information of patient in history
                 var history = new AdmissionHistory
                 {
-                    OriginalPatientId = patient.Id,
+                    OriginalPatientId = patient.PatientId,
                     FirstName = patient.FirstName,
                     LastName = patient.LastName,
                     Birthdate = patient.Birthdate,

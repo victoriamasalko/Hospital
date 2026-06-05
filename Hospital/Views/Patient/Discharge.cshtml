@@ -27,7 +27,7 @@
     <dd class="col-sm-9">@Model.RegistrationDate.ToString("dd/MM/yyyy")</dd>
 </dl>
 
-<form asp-action="Discharge" asp-route-id="@Model.Id" method="post">
+<form asp-action="Discharge" asp-route-id="@Model.PatientId" method="post">
     <button type="submit" class="btn btn-danger">Yes, remove patient</button>
     <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
 </form>

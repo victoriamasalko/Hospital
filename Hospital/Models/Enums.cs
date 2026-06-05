@@ -11,3 +11,10 @@ public enum RoomType
     Private,
     Public
 }
+public enum DosageType
+{
+    Oral,
+    Intravenous,
+    Topical,
+    Subcutaneous
+}

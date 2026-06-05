@@ -5,7 +5,10 @@ namespace Hospital.Models
 {
     public class Patient
     {
-        public int Id { get; set; }
+        public Patient() {
+            PatientMedications = new List<PatientMedication>();
+        }
+        public int PatientId { get; set; }
         [Required, StringLength(50)]
         [Display(Name ="First Name")]
         public string FirstName { get; set; }
@@ -43,5 +46,6 @@ namespace Hospital.Models
         public string? Allergies { get; set; }
         [Required]
         public string Diagnosis { get; set;  }
+        public ICollection<PatientMedication> PatientMedications { get; set; }
     }
 }

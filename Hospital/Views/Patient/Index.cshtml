@@ -21,7 +21,7 @@
         @foreach (var patient in Model)
         {
             <tr>
-                <td>@patient.Id</td>
+                <td>@patient.PatientId</td>
                 <td>@patient.FirstName</td>
                 <td>@patient.LastName</td>
                 <td>@patient.Birthdate.ToString("dd/MM/yyyy")</td>
@@ -29,13 +29,13 @@
                 <td>@patient.RoomNumber</td>
                 <td>@patient.RegistrationDate.ToString("dd/MM/yyyy")</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@patient.Id" class="btn btn-sm btn-dark">Details</a>
-                    <a asp-controller="Medication" asp-action="Index" asp-route-patientId="@patient.Id" class="btn btn-sm btn-dark">MED</a>
-                    <a asp-controller="PsychReport" asp-action="Index" asp-route-patientId="@patient.Id" class="btn btn-sm btn-dark">PSY</a>
+                    <a asp-action="Details" asp-route-id="@patient.PatientId" class="btn btn-sm btn-dark">Details</a>
+                    <a asp-controller="Medication" asp-action="Index" asp-route-patientId="@patient.PatientId" class="btn btn-sm btn-dark">MED</a>
+                    <a asp-controller="PsychReport" asp-action="Index" asp-route-patientId="@patient.PatientId" class="btn btn-sm btn-dark">PSY</a>
                     @if (User.IsInRole("Nurse"))
                     {
-                        <a asp-action="Edit" asp-route-id="@patient.Id">  <img class="overviewIcon" src="~/images/edit.png" alt="edit"></a>
-                        <a asp-action="Discharge" asp-route-id="@patient.Id"> <img class="overviewIcon" src="~/images/delete.png" alt="delete"></a>
+                        <a asp-action="Edit" asp-route-id="@patient.PatientId">  <img class="overviewIcon" src="~/images/edit.png" alt="edit"></a>
+                        <a asp-action="Discharge" asp-route-id="@patient.PatientId"> <img class="overviewIcon" src="~/images/delete.png" alt="delete"></a>
                     }
                 </td>
             </tr>
