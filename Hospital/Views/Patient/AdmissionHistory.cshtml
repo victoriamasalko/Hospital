@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Hospital.Models.AdmissionHistory>
+@{
+    ViewData["Title"] = "Admission History";
+}
+
+<h2>Admission History</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Original ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Diagnosis</th>
+            <th>Gender</th>
+            <th>Room</th>
+            <th>Room Type</th>
+            <th>Registration Date</th>
+            <th>Discharged On</th>
+            <th>Allergies</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.OriginalPatientId</td>
+                <td>@record.FirstName</td>
+                <td>@record.LastName</td>
+                <td>@record.Birthdate.ToString("dd/MM/yyyy")</td>
+                <td>@record.Diagnosis</td>
+                <td>@record.Gender</td>
+                <td>@record.RoomNumber</td>
+                <td>@record.RoomType</td>
+                <td>@record.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                <td>@record.DischargedOn.ToString("dd/MM/yyyy")</td>
+                <td>@(record.Allergies ?? "None")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-outline-secondary mt-3">Back to patients</a>
+

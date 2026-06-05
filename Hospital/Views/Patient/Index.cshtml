@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Hospital.Models.Patient>
+@{
+    ViewData["Title"] = "Patients";
+}
+<h2>Overview Of Patients</h2>
+
+@if (User.IsInRole("Nurse"))
+{
+    <a asp-action="Add" class="btn btn-success mb-3">Add Patient</a>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Diagnosis</th>
+            <th>Room</th>
+            <th>Registration Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.Id</td>
+                <td>@patient.FirstName</td>
+                <td>@patient.LastName</td>
+                <td>@patient.Birthdate.ToString("dd/MM/yyyy")</td>
+                <td>@patient.Diagnosis</td>
+                <td>@patient.RoomNumber</td>
+                <td>@patient.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@patient.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-controller="Medication" asp-action="Index" asp-route-patientId="@patient.Id" class="btn btn-sm btn-primary">Medication</a>
+                    <a asp-controller="PsychReport" asp-action="Index" asp-route-patientId="@patient.Id" class="btn btn-sm btn-secondary">Psych Report</a>
+                    @if (User.IsInRole("Nurse"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@patient.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Discharge" asp-route-id="@patient.Id" class="btn btn-sm btn-danger">Remove</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="AdmissionHistory" class="btn btn-outline-secondary mt-3">View Admission History</a>

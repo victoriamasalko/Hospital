@@ -1,0 +1,33 @@
+﻿@model Hospital.Models.Patient
+@{
+    ViewData["Title"] = "Remove Patient";
+}
+
+<h2>Remove Patient</h2>
+
+<p class="text-danger">Are you sure you want to remove this patient? Their information will be saved in the admission history.</p>
+
+<dl class="row">
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+
+    <dt class="col-sm-3">Diagnosis</dt>
+    <dd class="col-sm-9">@Model.Diagnosis</dd>
+
+    <dt class="col-sm-3">Date of Birth</dt>
+    <dd class="col-sm-9">@Model.Birthdate.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-3">Room</dt>
+    <dd class="col-sm-9">@Model.RoomNumber (@Model.RoomType)</dd>
+
+    <dt class="col-sm-3">Registration Date</dt>
+    <dd class="col-sm-9">@Model.RegistrationDate.ToString("dd/MM/yyyy")</dd>
+</dl>
+
+<form asp-action="Discharge" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Yes, remove patient</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form>

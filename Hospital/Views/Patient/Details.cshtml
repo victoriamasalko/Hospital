@@ -1,0 +1,54 @@
+﻿@model Hospital.Models.Patient
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h2>Patient Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+
+    <dt class="col-sm-3">Diagnosis</dt>
+    <dd class="col-sm-9">@Model.Diagnosis</dd>
+
+    <dt class="col-sm-3">Date of Birth</dt>
+    <dd class="col-sm-9">@Model.Birthdate.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-3">Gender</dt>
+    <dd class="col-sm-9">@Model.Gender</dd>
+
+    <dt class="col-sm-3">Address</dt>
+    <dd class="col-sm-9">@Model.Address</dd>
+
+    <dt class="col-sm-3">Phone Number</dt>
+    <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+    <dt class="col-sm-3">Registration Date</dt>
+    <dd class="col-sm-9">@Model.RegistrationDate.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-3">Room Number</dt>
+    <dd class="col-sm-9">@Model.RoomNumber</dd>
+
+    <dt class="col-sm-3">Room Type</dt>
+    <dd class="col-sm-9">@Model.RoomType</dd>
+
+    <dt class="col-sm-3">Allergies</dt>
+    <dd class="col-sm-9">@(Model.Allergies ?? "None")</dd>
+</dl>
+
+<div class="mt-3">
+    <a asp-controller="Medication" asp-action="Index" asp-route-patientId="@Model.Id" class="btn btn-primary">Medication</a>
+    <a asp-controller="PsychReport" asp-action="Index" asp-route-patientId="@Model.Id" class="btn btn-secondary">Psych Report</a>
+    @if (User.IsInRole("Nurse"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to overview</a>
+</div>
